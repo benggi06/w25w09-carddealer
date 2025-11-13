@@ -4,17 +4,32 @@
         xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>카드 딜러</title>
+    <title>카드 딜러 - 모던 갤러리</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<h3>카드</h3>
-<div style="display: flex;">
-    <div th:each="card : ${cards}">
-        <img
-                th:src="@{/images/{imageName}(imageName=${card})}"
-                alt="카드 이미지"
-                width="200px">
+<body class="bg-gray-100 min-h-screen p-4 md:p-8">
+
+<main class="max-w-7xl mx-auto bg-white p-6 rounded-xl shadow-lg">
+
+    <h1 class="text-3xl md:text-4xl font-bold text-center mb-8 text-gray-900">
+        카드 갤러리
+    </h1>
+    <h2 class="text-xl text-gray-700 mb-6">전체 카드</h2>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+
+        <div
+                th:each="card : ${cards}"
+                class="bg-gray-50 p-2 rounded-lg shadow-md border border-gray-200 transition-all duration-300 hover:shadow-xl hover:scale-105"
+        >
+            <img
+                    th:src="@{/images/{imageName}(imageName=${card})}"
+                    alt="카드 이미지"
+                    class="w-full h-auto rounded-md"
+            >
+        </div>
     </div>
-</div>
+</main>
+
 </body>
 </html>
